@@ -21,6 +21,7 @@ const host = (u?: string) => u ? new URL(u).hostname.replace(/^www\./, '') : '';
           <h1>{d.name}</h1>
           <p class="lead">{d.summary}</p>
           <div class="prose"><Content /></div>
+          {d.quote && <blockquote class="testimonial" style="margin:24px 0 0"><p>“{d.quote}”</p><cite>{d.quoteBy}</cite></blockquote>}
           <div class="links" style="margin-top:20px">
             {d.url && d.status !== 'Coming soon' && <a class="btn btn-primary" href={d.url}>Visit {host(d.url)}</a>}
             {d.repo && <a class="btn btn-ghost" href={d.repo}>Code on GitHub</a>}

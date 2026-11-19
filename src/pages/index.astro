@@ -5,6 +5,7 @@ import ProjectCard from '../components/ProjectCard.astro';
 import { getCollection } from 'astro:content';
 const all = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
 const featured = all.filter(p => p.data.featured);
+const quoted = all.find(p => p.data.quote);
 const more = all.filter(p => !p.data.featured && p.data.status === 'Live').slice(0, 3);
 const services = [
   ['📱', 'Mobile apps', 'iPhone, iPad and Android apps, built once and shipped to the web and the app stores.'],
@@ -48,6 +49,15 @@ const services = [
       <div class="grid">{more.map(p => <ProjectCard p={p} />)}</div>
     </div>
   </section>
+
+  {quoted && (
+  <section style="padding-top:0">
+    <div class="wrap">
+      <h2>What clients say</h2>
+      <blockquote class="testimonial"><p>“{quoted.data.quote}”</p><cite>{quoted.data.quoteBy}</cite></blockquote>
+    </div>
+  </section>
+  )}
 
   <section>
     <div class="wrap">
