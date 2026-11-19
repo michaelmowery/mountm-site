@@ -1,10 +1,11 @@
 ---
+import { u } from '../lib/url';
 const { p } = Astro.props;
 const d = p.data;
 const badge = d.status === 'Live' ? 'live' : d.status === 'Coming soon' ? 'soon' : 'past';
 const initials = d.name.replace(/^(\w)\w*[\s.]*(\w?).*/, '$1$2').toUpperCase().slice(0,2);
 ---
-<a class={`card ${d.category.toLowerCase().replace(' ', '-')}`} href={`/work/${p.id}/`}>
+<a class={`card ${d.category.toLowerCase().replace(' ', '-')}`} href={u(`/work/${p.id}/`)}>
   <div class="top">
     <span class="tile" aria-hidden="true">{initials}</span>
     <span class={`badge ${badge}`}>{d.status}</span>

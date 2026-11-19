@@ -16,6 +16,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: withastro/action@v3
+        env:
+          # Remove once mountm.tech is set as the Pages custom domain.
+          SITE_BASE: /mountm-site
   deploy:
     needs: build
     runs-on: ubuntu-latest

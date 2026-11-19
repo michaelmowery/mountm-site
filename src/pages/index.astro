@@ -1,4 +1,5 @@
 ---
+import { u } from '../lib/url';
 import Base from '../layouts/Base.astro';
 import Feature from '../components/Feature.astro';
 import ProjectCard from '../components/ProjectCard.astro';
@@ -22,14 +23,14 @@ const services = [
       <p class="lead">I design and build mobile apps, websites and web tools for businesses and people with an idea. You can try my own apps below.</p>
       <div class="actions">
         <a class="btn btn-primary" href="mailto:mountmtech@gmail.com?subject=New%20project">Start a project</a>
-        <a class="btn btn-ghost" href="/work/">See the work</a>
+        <a class="btn btn-ghost" href={u("/work/")}>See the work</a>
       </div>
     </div>
   </section>
 
   <section style="padding-top:24px">
     <div class="wrap">
-      <div class="section-head"><h2>What I build</h2><a href="/services/">How it works →</a></div>
+      <div class="section-head"><h2>What I build</h2><a href={u("/services/")}>How it works →</a></div>
       <div class="services">
         {services.map(([i, t, d]) => <div class="service"><div class="icon" aria-hidden="true">{i}</div><h3>{t}</h3><p>{d}</p></div>)}
       </div>
@@ -45,7 +46,7 @@ const services = [
 
   <section>
     <div class="wrap">
-      <div class="section-head"><h2>More work</h2><a href="/work/">All projects →</a></div>
+      <div class="section-head"><h2>More work</h2><a href={u("/work/")}>All projects →</a></div>
       <div class="grid">{more.map(p => <ProjectCard p={p} />)}</div>
     </div>
   </section>

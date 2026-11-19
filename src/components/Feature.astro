@@ -1,4 +1,5 @@
 ---
+import { u } from '../lib/url';
 const { p } = Astro.props;
 const d = p.data;
 ---
@@ -10,9 +11,9 @@ const d = p.data;
     <ul class="chips">{d.platforms.map((x: string) => <li>{x}</li>)}</ul>
     <div class="links">
       {d.url && <a class="btn btn-primary" href={d.url}>Try it on the web</a>}
-      <a class="btn btn-ghost" href={`/work/${p.id}/`}>Case study</a>
+      <a class="btn btn-ghost" href={u(`/work/${p.id}/`)}>Case study</a>
     </div>
     <p class="soon" style="margin-top:14px">App Store coming soon · Google Play coming soon</p>
   </div>
-  <div class="shot"><img src={d.image} alt={`${d.name} screenshot`} loading="lazy" /></div>
+  <div class="shot"><img src={u(d.image)} alt={`${d.name} screenshot`} loading="lazy" /></div>
 </article>
