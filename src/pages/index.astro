@@ -1,0 +1,61 @@
+---
+import Base from '../layouts/Base.astro';
+import Feature from '../components/Feature.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { getCollection } from 'astro:content';
+const all = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+const featured = all.filter(p => p.data.featured);
+const more = all.filter(p => !p.data.featured && p.data.status === 'Live').slice(0, 3);
+const services = [
+  ['📱', 'Mobile apps', 'iPhone, iPad and Android apps, built once and shipped to the web and the app stores.'],
+  ['🌐', 'Websites', 'Fast, good-looking sites on WordPress, Shopify or custom code, built to be easy to update.'],
+  ['⚙️', 'Web apps', 'Custom tools and online services, from first sketch to a working product.'],
+  ['🛡️', 'Hosting and care', 'Domains, hosting, updates and backups handled, so your site stays fast and secure.'],
+];
+---
+<Base>
+  <section class="hero">
+    <div class="wrap">
+      <div class="eyebrow">Mount M Technologies · Telluride, Colorado</div>
+      <h1>Apps and websites, <span class="grad-text">built to be used.</span></h1>
+      <p class="lead">I design and build mobile apps, websites and web tools for businesses and people with an idea. You can try my own apps below.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="mailto:mountmtech@gmail.com?subject=New%20project">Start a project</a>
+        <a class="btn btn-ghost" href="/work/">See the work</a>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:24px">
+    <div class="wrap">
+      <div class="section-head"><h2>What I build</h2><a href="/services/">How it works →</a></div>
+      <div class="services">
+        {services.map(([i, t, d]) => <div class="service"><div class="icon" aria-hidden="true">{i}</div><h3>{t}</h3><p>{d}</p></div>)}
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head"><h2>Featured apps</h2><p>Designed, built and shipped by Mount M.</p></div>
+      <div class="featured">{featured.map(p => <Feature p={p} />)}</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head"><h2>More work</h2><a href="/work/">All projects →</a></div>
+      <div class="grid">{more.map(p => <ProjectCard p={p} />)}</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="cta">
+        <h2>Have an app or website in mind?</h2>
+        <p>Tell me what you're trying to do. I'll reply with ideas, a rough timeline and what it would take.</p>
+        <a class="btn" href="mailto:mountmtech@gmail.com?subject=New%20project">Email mountmtech@gmail.com</a>
+      </div>
+    </div>
+  </section>
+</Base>

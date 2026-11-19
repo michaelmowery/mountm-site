@@ -1,0 +1,42 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection, render } from 'astro:content';
+export async function getStaticPaths() {
+  const all = await getCollection('projects');
+  return all.map(p => ({ params: { id: p.id }, props: { p } }));
+}
+const { p } = Astro.props;
+const d = p.data;
+const { Content } = await render(p);
+const badge = d.status === 'Live' ? 'live' : d.status === 'Coming soon' ? 'soon' : 'past';
+const host = (u?: string) => u ? new URL(u).hostname.replace(/^www\./, '') : '';
+---
+<Base title={d.name} description={d.summary}>
+  <section class="hero">
+    <div class="wrap">
+      <a class="back" href="/work/">← All work</a>
+      <div class="project-hero">
+        <div>
+          <div class="eyebrow">{d.category} · <span class={`badge ${badge}`}>{d.status}</span></div>
+          <h1>{d.name}</h1>
+          <p class="lead">{d.summary}</p>
+          <div class="prose"><Content /></div>
+          <div class="links" style="margin-top:20px">
+            {d.url && d.status !== 'Coming soon' && <a class="btn btn-primary" href={d.url}>Visit {host(d.url)}</a>}
+            {d.repo && <a class="btn btn-ghost" href={d.repo}>Code on GitHub</a>}
+          </div>
+          {d.category === 'App' && d.status === 'Live' && <p class="soon" style="margin-top:14px">App Store coming soon · Google Play coming soon</p>}
+        </div>
+        <div>
+          {d.image && <div class="shot"><img src={d.image} alt={`${d.name} screenshot`} /></div>}
+          <dl class="meta">
+            {d.statusNote && <div><dt>Status</dt><dd>{d.statusNote}</dd></div>}
+            {d.platforms.length > 0 && <div><dt>Platforms</dt><dd>{d.platforms.join(', ')}</dd></div>}
+            {d.tech.length > 0 && <div><dt>Built with</dt><dd>{d.tech.join(', ')}</dd></div>}
+            {d.privacy && <div><dt>Support</dt><dd><a href={d.support}>Support</a> · <a href={d.privacy}>Privacy policy</a></dd></div>}
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>

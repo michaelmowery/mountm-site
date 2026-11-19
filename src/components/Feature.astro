@@ -1,0 +1,18 @@
+---
+const { p } = Astro.props;
+const d = p.data;
+---
+<article class="feature">
+  <div class="body">
+    <div class="eyebrow">{d.category} · Featured</div>
+    <h2>{d.name}</h2>
+    <p class="lead">{d.summary}</p>
+    <ul class="chips">{d.platforms.map((x: string) => <li>{x}</li>)}</ul>
+    <div class="links">
+      {d.url && <a class="btn btn-primary" href={d.url}>Try it on the web</a>}
+      <a class="btn btn-ghost" href={`/work/${p.id}/`}>Case study</a>
+    </div>
+    <p class="soon" style="margin-top:14px">App Store coming soon · Google Play coming soon</p>
+  </div>
+  <div class="shot"><img src={d.image} alt={`${d.name} screenshot`} loading="lazy" /></div>
+</article>

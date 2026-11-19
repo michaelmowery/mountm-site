@@ -1,0 +1,31 @@
+---
+import Base from '../../layouts/Base.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import { getCollection } from 'astro:content';
+const all = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+const groups = [
+  ['Apps and games', all.filter(p => p.data.status !== 'Coming soon' && (p.data.category === 'App' || p.data.category === 'Game'))],
+  ['Websites', all.filter(p => p.data.status !== 'Coming soon' && p.data.category === 'Website')],
+  ['Client work', all.filter(p => p.data.status !== 'Coming soon' && p.data.category === 'Client work')],
+  ['Coming soon', all.filter(p => p.data.status === 'Coming soon')],
+] as const;
+---
+<Base title="Work" description="Apps, games, websites and client projects by Mount M Technologies.">
+  <section class="hero" style="padding-bottom:24px">
+    <div class="wrap">
+      <div class="eyebrow">Work</div>
+      <h1>Things I've built</h1>
+      <p class="lead">My own apps and sites, work for clients, and what's coming next.</p>
+    </div>
+  </section>
+  <section style="padding-top:24px">
+    <div class="wrap">
+      {groups.map(([title, items]) => items.length > 0 && (
+        <div class="group">
+          <h2>{title}</h2>
+          <div class="grid">{items.map(p => <ProjectCard p={p} />)}</div>
+        </div>
+      ))}
+    </div>
+  </section>
+</Base>

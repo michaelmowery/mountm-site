@@ -1,0 +1,44 @@
+---
+import Base from '../layouts/Base.astro';
+const services = [
+  ['📱', 'Mobile apps', 'iPhone, iPad and Android apps. I usually build one codebase that runs on the web and ships to the App Store and Google Play, which keeps cost down and updates in step.'],
+  ['🌐', 'Websites', 'Business sites, shops and portfolios on WordPress, Shopify or custom code. Fast, mobile-friendly and easy for you to update.'],
+  ['⚙️', 'Web apps and tools', 'Custom software for a job your business does every day: search tools, booking, catalogs, dashboards and integrations with the services you already use.'],
+  ['🛡️', 'Hosting, domains and care', 'I can register domains, host the site, keep it updated and backed up, and be the person you call when something breaks.'],
+];
+const steps = [
+  ['Talk', 'A short call or email about what you want to build, who it is for and what success looks like.'],
+  ['Plan', 'A written plan with scope, timeline and price, so there are no surprises.'],
+  ['Build', 'I build in small steps and share working previews along the way, so you can steer early.'],
+  ['Launch and support', 'I handle launch, app store submission and hosting, and stay on for updates.'],
+];
+---
+<Base title="Services" description="Mobile apps, websites, web apps and hosting from Mount M Technologies.">
+  <section class="hero" style="padding-bottom:24px">
+    <div class="wrap">
+      <div class="eyebrow">Services</div>
+      <h1>From idea to app store</h1>
+      <p class="lead">One developer from first sketch to launch, so nothing gets lost between a designer, a coder and a host.</p>
+    </div>
+  </section>
+  <section style="padding-top:24px">
+    <div class="wrap">
+      <div class="services">{services.map(([i, t, d]) => <div class="service"><div class="icon" aria-hidden="true">{i}</div><h3>{t}</h3><p>{d}</p></div>)}</div>
+    </div>
+  </section>
+  <section>
+    <div class="wrap">
+      <h2>How a project works</h2>
+      <div class="steps">{steps.map(([t, d]) => <div class="step"><h3>{t}</h3><p>{d}</p></div>)}</div>
+    </div>
+  </section>
+  <section>
+    <div class="wrap">
+      <div class="cta">
+        <h2>Let's talk about your project</h2>
+        <p>Email a few lines about what you have in mind. No commitment.</p>
+        <a class="btn" href="mailto:mountmtech@gmail.com?subject=New%20project">Email mountmtech@gmail.com</a>
+      </div>
+    </div>
+  </section>
+</Base>
