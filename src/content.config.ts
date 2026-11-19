@@ -16,6 +16,7 @@ const projects = defineCollection({
     privacy: z.string().url().optional(),
     support: z.string().url().optional(),
     image: z.string().optional(),
+    icon: z.string().optional(),
     featured: z.boolean().default(false),
     order: z.number().default(50),
     quote: z.string().optional(),

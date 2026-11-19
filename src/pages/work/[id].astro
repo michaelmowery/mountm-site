@@ -19,7 +19,7 @@ const host = (u?: string) => u ? new URL(u).hostname.replace(/^www\./, '') : '';
       <div class="project-hero">
         <div>
           <div class="eyebrow">{d.category} · <span class={`badge ${badge}`}>{d.status}</span></div>
-          <h1>{d.name}</h1>
+          <h1 class="titled">{d.icon && <img class="app-icon lg" src={u(d.icon)} alt="" width="72" height="72" />}{d.name}</h1>
           <p class="lead">{d.summary}</p>
           <div class="prose"><Content /></div>
           {d.quote && <blockquote class="testimonial" style="margin:24px 0 0"><p>“{d.quote}”</p><cite>{d.quoteBy}</cite></blockquote>}

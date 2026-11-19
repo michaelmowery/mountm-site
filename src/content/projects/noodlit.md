@@ -12,6 +12,7 @@ privacy: https://noodlit.app/privacy.html
 support: https://noodlit.app/support.html
 image: /img/work/noodlit.png
 featured: true
+icon: /img/icons/noodlit.png
 order: 2
 ---
 Noodlit started on a foggy shower door: you write in the steam, and the fog quietly takes it back. Scribble, sketch or type whatever is rattling around, then let it go, so the next idea always has room.

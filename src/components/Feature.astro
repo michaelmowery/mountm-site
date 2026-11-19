@@ -6,7 +6,7 @@ const d = p.data;
 <article class="feature">
   <div class="body">
     <div class="eyebrow">{d.category} · Featured</div>
-    <h2>{d.name}</h2>
+    <h2 class="titled">{d.icon && <img class="app-icon" src={u(d.icon)} alt="" width="56" height="56" />}{d.name}</h2>
     <p class="lead">{d.summary}</p>
     <ul class="chips">{d.platforms.map((x: string) => <li>{x}</li>)}</ul>
     <div class="links">

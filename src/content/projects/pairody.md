@@ -12,6 +12,7 @@ privacy: https://pairody.app/privacy.html
 support: https://pairody.app/support.html
 image: /img/work/pairody.png
 featured: true
+icon: /img/icons/pairody.png
 order: 1
 ---
 Pairody is a concentration game where every card is a sound. Instead of remembering pictures, you find pairs by ear: animal sounds, instruments, weather, vehicles, ringtones, famous quotes, tongue twisters, hello in many languages, Morse code and more.

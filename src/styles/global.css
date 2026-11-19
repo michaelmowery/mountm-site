@@ -105,6 +105,11 @@ section { padding: 72px 0; }
 .card p { color: var(--muted); font-size: .95rem; margin: 0; }
 .tile { width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; font-weight: 800; color: #fff; background: linear-gradient(135deg, #3E4552, #8A93A3); }
 .card.app .tile, .card.game .tile { background: var(--grad); }
+.tile.icon { background: none; object-fit: cover; box-shadow: 0 1px 3px rgba(0,0,0,.18); }
+.titled { display: flex; align-items: center; gap: .45em; }
+.app-icon { width: 56px; height: 56px; border-radius: 14px; flex: none; box-shadow: 0 2px 8px rgba(0,0,0,.18); }
+.app-icon.lg { width: 72px; height: 72px; border-radius: 18px; }
+@media (max-width: 600px) { .app-icon { width: 44px; height: 44px; border-radius: 11px; } .app-icon.lg { width: 56px; height: 56px; border-radius: 14px; } }
 .group { margin-bottom: 48px; }
 .group h2 { font-size: 1.4rem; }
 
