@@ -1,0 +1,11 @@
+/* Alternate color themes, used only by the /colors/<theme>/ review builds. */
+:root[data-theme="evergreen"] { --blue: #1F5E46; --blue-2: #2E7D5B; --sky: #6BBF8A; --grad: linear-gradient(135deg, #1F5E46 0%, #6BBF8A 100%); --shadow-rgb: 31,94,70; --cta-ink: #1F5E46; --bg: #F5F8F6; }
+@media (prefers-color-scheme: dark) { :root[data-theme="evergreen"] { --blue: #7FD3A0; --blue-2: #6BBF8A; --bg: #0C1512; --card: #13201B; --line: #22372E; } }
+:root[data-theme="alpenglow"] { --blue: #A63A22; --blue-2: #D2552F; --sky: #F2A04E; --grad: linear-gradient(135deg, #A63A22 0%, #F2A04E 100%); --shadow-rgb: 166,58,34; --cta-ink: #A63A22; --bg: #FBF8F5; }
+@media (prefers-color-scheme: dark) { :root[data-theme="alpenglow"] { --blue: #F5A672; --blue-2: #F2A04E; --bg: #16100D; --card: #211814; --line: #3A2A22; } }
+:root[data-theme="dusk"] { --blue: #4A2C82; --blue-2: #6A44BF; --sky: #A88BF5; --grad: linear-gradient(135deg, #4A2C82 0%, #A88BF5 100%); --shadow-rgb: 74,44,130; --cta-ink: #4A2C82; --bg: #F8F7FC; }
+@media (prefers-color-scheme: dark) { :root[data-theme="dusk"] { --blue: #B9A2F8; --blue-2: #A88BF5; --bg: #100E19; --card: #1A1726; --line: #2E2942; } }
+.theme-bar { background: var(--ink); color: var(--bg); font-size: .85rem; padding: 8px 0; }
+.theme-bar .wrap { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center; }
+.theme-bar a { color: var(--bg); opacity: .75; }
+.theme-bar a[aria-current] { opacity: 1; font-weight: 700; text-decoration: underline; }

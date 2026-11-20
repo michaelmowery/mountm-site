@@ -10,6 +10,8 @@
   --sky: #4FA3E0;
   --slate: #4A515E;
   --grad: linear-gradient(135deg, #1E4FA8 0%, #4FA3E0 100%);
+  --shadow-rgb: 30,79,168;
+  --cta-ink: #1E4FA8;
   --radius: 18px;
   --max: 1120px;
   color-scheme: light;
@@ -51,7 +53,7 @@ nav a { color: var(--text); font-weight: 600; font-size: .95rem; }
 nav a[aria-current="page"] { color: var(--blue); }
 .btn { display: inline-flex; align-items: center; gap: .5em; padding: .8em 1.4em; border-radius: 999px; font-weight: 700; font-size: .98rem; border: 1px solid transparent; transition: transform .15s, box-shadow .15s; }
 .btn:hover { text-decoration: none; transform: translateY(-1px); }
-.btn-primary { background: var(--grad); color: #fff; box-shadow: 0 6px 20px rgba(30,79,168,.25); }
+.btn-primary { background: var(--grad); color: #fff; box-shadow: 0 6px 20px rgba(var(--shadow-rgb),.25); }
 .btn-ghost { border-color: var(--line); color: var(--ink); background: var(--card); }
 nav .btn { padding: .55em 1.1em; color: #fff; }
 @media (max-width: 760px) {
@@ -128,7 +130,7 @@ section { padding: 72px 0; }
 .cta h2 { color: #fff; }
 .cta p { color: rgba(255,255,255,.88); max-width: 34em; margin: 0 auto 26px; }
 .cta .btn { background: #fff; color: var(--blue); }
-@media (prefers-color-scheme: dark) { .cta .btn { color: #1E4FA8; } }
+@media (prefers-color-scheme: dark) { .cta .btn { color: var(--cta-ink); } }
 .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 18px; counter-reset: s; }
 .step { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; }
 .step::before { counter-increment: s; content: counter(s); display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; background: var(--grad); color: #fff; font-weight: 800; margin-bottom: 12px; }

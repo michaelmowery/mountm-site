@@ -1,21 +1,27 @@
 ---
 import { u } from '../lib/url';
 import '../styles/global.css';
+import '../styles/themes.css';
 interface Props { title?: string; description?: string; }
 const { title, description = 'Mount M Technologies designs and builds apps and websites. Based in Telluride, Colorado.' } = Astro.props;
 const fullTitle = title ? `${title} · Mount M Technologies` : 'Mount M Technologies · Apps and websites, built in Telluride';
 const path = Astro.url.pathname;
 const nav = [ ['/work/', 'Work'], ['/services/', 'Services'], ['/about/', 'About'] ];
 const email = 'mountmtech@gmail.com';
+// Review builds: PUBLIC_THEME=evergreen|alpenglow|dusk, served at /colors/<theme>/.
+const theme = import.meta.env.PUBLIC_THEME || '';
+const brand = theme ? `/brand/${theme}` : '/brand';
+const themes = [['', 'Original'], ['evergreen', 'Evergreen'], ['alpenglow', 'Alpenglow'], ['dusk', 'Dusk']];
 ---
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme={theme || undefined}>
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{fullTitle}</title>
   <meta name="description" content={description} />
-  <link rel="icon" href={u("/favicon.svg")} type="image/svg+xml" />
+  {theme && <meta name="robots" content="noindex, nofollow" />}
+  <link rel="icon" href={u(theme ? `${brand}/favicon.svg` : "/favicon.svg")} type="image/svg+xml" />
   <meta property="og:title" content={fullTitle} />
   <meta property="og:description" content={description} />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -23,11 +29,17 @@ const email = 'mountmtech@gmail.com';
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 </head>
 <body>
+  {theme && (
+    <div class="theme-bar"><div class="wrap">
+      <strong>Color options:</strong>
+      {themes.map(([k, label]) => <a href={k ? `/colors/${k}/` : '/'} aria-current={k === theme ? 'true' : undefined}>{label}</a>)}
+    </div></div>
+  )}
   <header class="site-header">
     <div class="wrap">
       <a class="logo" href={u("/")} aria-label="Mount M Technologies home">
-        <img class="light" src={u("/brand/lockup-light.svg")} alt="Mount M Technologies" width="137" height="46" />
-        <img class="dark" src={u("/brand/lockup-dark.svg")} alt="Mount M Technologies" width="137" height="46" />
+        <img class="light" src={u(`${brand}/lockup-light.svg`)} alt="Mount M Technologies" width="137" height="46" />
+        <img class="dark" src={u(`${brand}/lockup-dark.svg`)} alt="Mount M Technologies" width="137" height="46" />
       </a>
       <nav aria-label="Main">
         <ul>
@@ -40,8 +52,8 @@ const email = 'mountmtech@gmail.com';
   <main><slot /></main>
   <footer class="site-footer">
     <div class="wrap">
-      <img class="light" src={u("/brand/lockup-light.svg")} alt="Mount M Technologies" />
-      <img class="dark" src={u("/brand/lockup-dark.svg")} alt="Mount M Technologies" />
+      <img class="light" src={u(`${brand}/lockup-light.svg`)} alt="Mount M Technologies" />
+      <img class="dark" src={u(`${brand}/lockup-dark.svg`)} alt="Mount M Technologies" />
       <div>Mount M Technologies, LLC · Telluride, Colorado · <a href={`mailto:${email}`}>{email}</a></div>
       <div>© {new Date().getFullYear()}</div>
     </div>
