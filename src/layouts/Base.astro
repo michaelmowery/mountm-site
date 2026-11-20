@@ -11,7 +11,10 @@ const email = 'mountmtech@gmail.com';
 // Review builds: PUBLIC_THEME=evergreen|alpenglow|dusk, served at /colors/<theme>/.
 const theme = import.meta.env.PUBLIC_THEME || '';
 const brand = theme ? `/brand/${theme}` : '/brand';
-const themes = [['', 'Original'], ['evergreen', 'Evergreen'], ['alpenglow', 'Alpenglow'], ['dusk', 'Dusk']];
+const groups = [
+  ['Three colors', [['alpine', 'Alpine'], ['canyon', 'Canyon'], ['glacier', 'Glacier']]],
+  ['One color', [['', 'Original'], ['evergreen', 'Evergreen'], ['alpenglow', 'Alpenglow'], ['dusk', 'Dusk']]],
+];
 ---
 <!doctype html>
 <html lang="en" data-theme={theme || undefined}>
@@ -31,8 +34,11 @@ const themes = [['', 'Original'], ['evergreen', 'Evergreen'], ['alpenglow', 'Alp
 <body>
   {theme && (
     <div class="theme-bar"><div class="wrap">
-      <strong>Color options:</strong>
-      {themes.map(([k, label]) => <a href={k ? `/colors/${k}/` : '/'} aria-current={k === theme ? 'true' : undefined}>{label}</a>)}
+      {groups.map(([g, list], i) => <>
+        {i > 0 && <span class="sep">|</span>}
+        <strong>{g}:</strong>
+        {(list as string[][]).map(([k, label]) => <a href={k ? `/colors/${k}/` : '/'} aria-current={k === theme ? 'true' : undefined}>{label}</a>)}
+      </>)}
     </div></div>
   )}
   <header class="site-header">
