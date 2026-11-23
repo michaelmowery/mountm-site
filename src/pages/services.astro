@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import { u } from '../lib/url';
 const services = [
   ['📱', 'Mobile apps', 'iPhone, iPad and Android apps. I usually build one codebase that runs on the web and ships to the App Store and Google Play, which keeps cost down and updates in step.'],
   ['🌐', 'Websites', 'Business sites, shops and portfolios on WordPress, Shopify or custom code. Fast, mobile-friendly and easy for you to update.'],
@@ -37,7 +38,7 @@ const steps = [
       <div class="cta">
         <h2>Let's talk about your project</h2>
         <p>Email a few lines about what you have in mind. No commitment.</p>
-        <a class="btn" href="mailto:mountmtech@gmail.com?subject=New%20project">Email mountmtech@gmail.com</a>
+        <a class="btn" href={u("/contact/")}>Start a project</a>
       </div>
     </div>
   </section>

@@ -143,3 +143,6 @@ section { padding: 72px 0; }
 .site-footer img { height: 34px; width: auto; }
 .site-footer .dark { display: none; }
 @media (prefers-color-scheme: dark) { .site-footer .light { display: none; } .site-footer .dark { display: block; } }
+.form-embed { margin-top: 28px; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; max-width: 760px; }
+.form-embed iframe { display: block; border: 0; width: 100%; min-height: 900px; background: transparent; }
+.app-help { margin-top: 18px; font-size: .95rem; color: var(--muted); }

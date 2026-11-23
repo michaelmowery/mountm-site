@@ -1,0 +1,19 @@
+---
+import Base from '../layouts/Base.astro';
+const form = 'https://forms.clickup.com/8533149/f/84d4x-17591/EJCU58AQ5FXCC7GDX8';
+const email = 'mountmtech@gmail.com';
+---
+<Base title="Contact" description="Start a project with Mount M Technologies, or ask a question about one of our apps.">
+  <section class="hero">
+    <div class="wrap">
+      <div class="eyebrow">Contact</div>
+      <h1>Let's talk</h1>
+      <p class="lead">Tell me about a project you have in mind, or send a question or feedback about one of the apps. I'll get back to you within a couple of business days.</p>
+      <div class="form-embed">
+        <iframe class="clickup-embed clickup-dynamic-height" src={form} title="Contact form" loading="lazy" width="100%" height="900"></iframe>
+      </div>
+      <p class="soon" style="margin-top:16px">Form not loading? <a href={form}>Open it in a new tab</a> or email <a href={`mailto:${email}`}>{email}</a>.</p>
+    </div>
+  </section>
+  <script async is:inline src="https://app-cdn.clickup.com/assets/js/forms-embed/v1.js"></script>
+</Base>

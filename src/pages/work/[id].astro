@@ -28,6 +28,7 @@ const host = (u?: string) => u ? new URL(u).hostname.replace(/^www\./, '') : '';
             {d.repo && <a class="btn btn-ghost" href={d.repo}>Code on GitHub</a>}
           </div>
           {d.category === 'App' && d.status === 'Live' && <p class="soon" style="margin-top:14px">App Store coming soon · Google Play coming soon</p>}
+          {['App', 'Game'].includes(d.category) && d.status === 'Live' && <p class="app-help">Questions, feedback or need help with {d.name}? <a href={u("/contact/")}>Contact us</a>.</p>}
         </div>
         <div>
           {d.image && <div class="shot"><img src={u(d.image)} alt={`${d.name} screenshot`} /></div>}
