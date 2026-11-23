@@ -17,6 +17,7 @@ const projects = defineCollection({
     support: z.string().url().optional(),
     image: z.string().optional(),
     icon: z.string().optional(),
+    iconFit: z.enum(['cover', 'contain']).default('cover'),
     featured: z.boolean().default(false),
     order: z.number().default(50),
     quote: z.string().optional(),

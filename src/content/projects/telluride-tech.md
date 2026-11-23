@@ -6,6 +6,8 @@ status: Past work
 platforms: [Web]
 tech: [WordPress, Self-hosted]
 url: https://telluridetech.com
+icon: "https://telluridetech.com/brand/telluridetech-logo.png"
+iconFit: contain
 order: 30
 ---
 Telluride Tech offered WordPress and Shopify websites, software development and IT support to local businesses. That work now continues under Mount M Technologies.

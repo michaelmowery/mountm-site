@@ -7,7 +7,8 @@ const initials = d.name.replace(/^(\w)\w*[\s.]*(\w?).*/, '$1$2').toUpperCase().s
 ---
 <a class={`card ${d.category.toLowerCase().replace(' ', '-')}`} href={u(`/work/${p.id}/`)}>
   <div class="top">
-    {d.icon ? <img class="tile icon" src={u(d.icon)} alt="" width="44" height="44" loading="lazy" /> : <span class="tile" aria-hidden="true">{initials}</span>}
+    {d.icon && <img class={`tile icon${d.iconFit === "contain" ? " contain" : ""}`} src={u(d.icon)} alt="" width="44" height="44" loading="lazy" onerror="this.nextElementSibling.hidden=false;this.remove()" />}
+    <span class="tile" aria-hidden="true" hidden={d.icon ? true : undefined}>{initials}</span>
     <span class={`badge ${badge}`}>{d.status}</span>
   </div>
   <span class="cat">{d.category}</span>
