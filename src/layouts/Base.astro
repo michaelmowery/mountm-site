@@ -1,5 +1,6 @@
 ---
 import { u } from '../lib/url';
+import { UMAMI_WEBSITE_ID, UMAMI_SRC, UMAMI_DOMAINS } from '../lib/analytics';
 import '../styles/global.css';
 import '../styles/themes.css';
 interface Props { title?: string; description?: string; }
@@ -30,6 +31,7 @@ const groups = [
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  {UMAMI_WEBSITE_ID && !theme && <script is:inline defer src={UMAMI_SRC} data-website-id={UMAMI_WEBSITE_ID} data-domains={UMAMI_DOMAINS}></script>}
 </head>
 <body>
   {theme && (
@@ -50,7 +52,7 @@ const groups = [
       <nav aria-label="Main">
         <ul>
           {nav.map(([href, label]) => <li><a href={u(href)} aria-current={path.startsWith(u(href)) ? 'page' : undefined}>{label}</a></li>)}
-          <li><a class="btn btn-primary" href={u("/contact/")}>Start a project</a></li>
+          <li><a class="btn btn-primary" href={u("/contact/")} data-umami-event="start-project" data-umami-event-from="header">Start a project</a></li>
         </ul>
       </nav>
     </div>

@@ -24,7 +24,7 @@ const host = (u?: string) => u ? new URL(u).hostname.replace(/^www\./, '') : '';
           <div class="prose"><Content /></div>
           {d.quote && <blockquote class="testimonial" style="margin:24px 0 0"><p>“{d.quote}”</p><cite>{d.quoteBy}</cite></blockquote>}
           <div class="links" style="margin-top:20px">
-            {d.url && d.status !== 'Coming soon' && <a class="btn btn-primary" href={d.url}>Visit {host(d.url)}</a>}
+            {d.url && d.status !== 'Coming soon' && <a class="btn btn-primary" href={d.url} data-umami-event="visit-project" data-umami-event-project={d.name}>Visit {host(d.url)}</a>}
             {d.repo && <a class="btn btn-ghost" href={d.repo}>Code on GitHub</a>}
           </div>
           {d.category === 'App' && d.status === 'Live' && <p class="soon" style="margin-top:14px">App Store coming soon · Google Play coming soon</p>}

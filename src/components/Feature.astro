@@ -10,7 +10,7 @@ const d = p.data;
     <p class="lead">{d.summary}</p>
     <ul class="chips">{d.platforms.map((x: string) => <li>{x}</li>)}</ul>
     <div class="links">
-      {d.url && <a class="btn btn-primary" href={d.url}>Try it on the web</a>}
+      {d.url && <a class="btn btn-primary" href={d.url} data-umami-event="visit-project" data-umami-event-project={d.name}>Try it on the web</a>}
       <a class="btn btn-ghost" href={u(`/work/${p.id}/`)}>Case study</a>
     </div>
     <p class="soon" style="margin-top:14px">App Store coming soon · Google Play coming soon</p>
