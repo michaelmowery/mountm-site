@@ -148,3 +148,4 @@ section { padding: 72px 0; }
 .app-help { margin-top: 18px; font-size: .95rem; color: var(--muted); }
 .tile.icon.contain, .app-icon.contain { object-fit: contain; background: #fff; padding: 3px; }
 .tile[hidden] { display: none; }
+.profiles { color: var(--muted); margin-top: 8px; }
