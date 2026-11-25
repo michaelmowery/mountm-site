@@ -7,6 +7,6 @@ statusNote: Live in early preview.
 platforms: [Web, phone and desktop]
 url: https://telluride.buzz
 icon: /img/icons/telluride-buzz.svg
-order: 6
+order: 12
 ---
 Telluride.Buzz pulls what locals and visitors check every morning into one screen. It shows current weather and snow in the forecast, CDOT road conditions on CO-145, CO-62 and US-550, overnight snow and lifts and runs open at the ski resort, and upcoming events. A live feed below it collects updates from the resort, CDOT COtrip and San Miguel County, each linked back to its source. It's the first town in the .buzz network, which will be gathered under TheTown.Buzz.
