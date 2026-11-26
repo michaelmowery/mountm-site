@@ -7,6 +7,12 @@ interface Props { title?: string; description?: string; }
 const { title, description = 'Mount M Technologies designs and builds apps and websites. Based in Telluride, Colorado.' } = Astro.props;
 const fullTitle = title ? `${title} · Mount M Technologies` : 'Mount M Technologies · Apps and websites, built in Telluride';
 const path = Astro.url.pathname;
+// Canonical: always https://mountm.tech + the page path (base stripped, trailing slash).
+const basePrefix = import.meta.env.BASE_URL.replace(/\/$/, '');
+let canonPath = basePrefix && path.startsWith(basePrefix) ? path.slice(basePrefix.length) || '/' : path;
+if (!canonPath.endsWith('/') && !/\.[a-z0-9]+$/i.test(canonPath)) canonPath += '/';
+const canonical = new URL(canonPath, 'https://mountm.tech').href;
+const is404 = canonPath === '/404/' || canonPath === '/404.html';
 const nav = [ ['/work/', 'Work'], ['/services/', 'Services'], ['/about/', 'About'] ];
 const email = 'mountmtech@gmail.com';
 // Review builds: PUBLIC_THEME=evergreen|alpenglow|dusk, served at /colors/<theme>/.
@@ -25,6 +31,8 @@ const groups = [
   <title>{fullTitle}</title>
   <meta name="description" content={description} />
   {theme && <meta name="robots" content="noindex, nofollow" />}
+  {!is404 && <link rel="canonical" href={canonical} />}
+  <meta property="og:url" content={canonical} />
   <link rel="icon" href={u(theme ? `${brand}/favicon.svg` : "/favicon.svg")} type="image/svg+xml" />
   <meta property="og:title" content={fullTitle} />
   <meta property="og:description" content={description} />

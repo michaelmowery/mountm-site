@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mountm.tech/sitemap.xml
